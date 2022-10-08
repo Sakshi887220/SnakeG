@@ -82,8 +82,7 @@ def score(score):
 
 def snake(block_size, snakelist):
     if direction == "right":
-        head = pygame.transform.rotate(img, 270)
-        tail1 = pygame.transform.rotate(tail, 270)
+        
 
     if direction == "left":
         head = pygame.transform.rotate(img, 90)
@@ -143,30 +142,7 @@ def gameLoop():
 
     while not gameExit:
 
-        while gameOver == True:
-            gameDisplay.fill(white)
-            message_to_screen("Game over",
-                              red,
-                              y_displace=-50,
-                              size="large")
-
-            message_to_screen("Press C to play again or Q to quit",
-                              black,
-                              50,
-                              size="medium")
-            pygame.display.update()
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    gameOver = False
-                    gameExit = True
-
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_q:
-                        gameExit = True
-                        gameOver = False
-                    if event.key == pygame.K_c:
-                        gameLoop()
+        
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -231,12 +207,7 @@ def gameLoop():
                 randAppleY = round(random.randrange(0, display_height - AppleThickness))  # /10.0)*10.0
                 snakeLength += 1
 
-            elif lead_y + block_size > randAppleY and lead_y + block_size < randAppleY + AppleThickness:
-
-                randAppleX = round(random.randrange(0, display_width - AppleThickness))  # /10.0)*10.0
-                randAppleY = round(random.randrange(0, display_height - AppleThickness))  # /10.0)*10.0
-                snakeLength += 1
-
+            
         clock.tick(FPS)
 
     pygame.quit()
